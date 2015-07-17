@@ -1,0 +1,9 @@
+name = OpenLayers Custom Control 
+description = OpenLayers Custom Control as a OL3 Submodule
+core = 7.x
+package = "Openlayers"
+
+dependencies[] = openlayers
+
+registry_autoload[] = PSR-4
+
