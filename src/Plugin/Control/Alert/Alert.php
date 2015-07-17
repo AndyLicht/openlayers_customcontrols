@@ -4,7 +4,7 @@
  * Control: Alert
  */
 
-namespace Drupal\openlayers\Plugin\Control\Alert;
+namespace Drupal\openlayers_customcontrols\Plugin\Control\Alert;
 use Drupal\openlayers\Component\Annotation\OpenlayersPlugin;
 use Drupal\openlayers\Types\Control;
 

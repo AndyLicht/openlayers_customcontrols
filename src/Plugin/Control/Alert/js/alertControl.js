@@ -1,15 +1,4 @@
-Drupal.openlayers.pluginManager.register({
-  fs: 'openlayers.Control:Alert',
-  init: function(data) {
-    return new alertControl(data.opt);
-  }
-});
-
-
-
-
 var alertControl = function(opt_options) {
-
   var options = opt_options || {};
 
   var button = document.createElement('button');
@@ -31,7 +20,5 @@ var alertControl = function(opt_options) {
     element: element,
     target: options.target
   });
-//    ol.inherits(this, ol.control.Control);
 };
-//ol.inherits(alertControl, ol.control.Control);
-
+ol.inherits(alertControl, ol.control.Control);
