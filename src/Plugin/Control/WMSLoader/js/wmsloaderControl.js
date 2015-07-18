@@ -1,11 +1,8 @@
-//var mainmap;
 var wmsloaderControl = function(opt_options,ol3_map) {
     var options = opt_options || {};
-//    mainmap = ol3_map;
     var button = document.createElement('button');
     button.type = 'button';
     button.innerHTML = 'WMS';
-
     var this_ = this;
 
     button.addEventListener('click', startwmsgui, false);
@@ -19,27 +16,19 @@ var wmsloaderControl = function(opt_options,ol3_map) {
 	element: element,
 	target: options.target
     });
-};
-ol.inherits(wmsloaderControl, ol.control.Control);
+    jQuery('body').on('click','#closeoverlay',function()
+    {
+	jQuery(this).parent().parent().remove();
+    });
 
-
-var startwmsgui = function(e) {
-    var guioverlay = '<div id="wmsloaderoverlay"><div class="wmsoverlaydiv"><p>For Example use:http://www.umweltkarten-niedersachsen.de/arcgis/services/GAV_wms/MapServer/WMSServer?request=getCapabilities&service=wms</p><div id="capa"></div><input id="wmsgetcapabilitiesurl" type="text" value=""></input><button type="button" id="loadcapa">loadCapa</button><button type="button" id="loadwms">loadWMS</button><button type="button" id="closeoverlay">Close</button></div></div>';
-    jQuery('body').append(guioverlay);
-  };
-
-jQuery('body').on('click','#closeoverlay',function()
-{
-    jQuery(this).parent().parent().remove();
-});
-jQuery('body').on('click','#loadcapa',function()
-{
-    //var path = Drupal.settings;
-    //console.log(path);
-    jQuery.ajax({
-	type:'POST',
-	url: 'php/proxyparser.php',   //that would be great it this is not in the base directory
-	data: {'wmsurl':jQuery('#wmsgetcapabilitiesurl').val()},
+    jQuery('body').on('click','#loadcapa',function()
+    {
+	//var path = Drupal.settings;
+	//console.log(path);
+	jQuery.ajax({
+	    type:'POST',
+	    url: '/php/proxyparser.php',   //that would be great it this is not in the base directory
+	    data: {'wmsurl':jQuery('#wmsgetcapabilitiesurl').val()},
 	context: document.body
     })
     .done(function(response)
@@ -47,36 +36,41 @@ jQuery('body').on('click','#loadcapa',function()
 	jQuery('#capa').html(response);
     })
     .fail(function(){console.log('fail')})
-
-});
-jQuery('body').on('click','#loadwms',function()
-{
-    console.log('Wms laden');
-    var serviceurl = jQuery('#wmsgetcapabilitiesurl').val();
-    var format = jQuery('input[name=imageformat]:checked').val();
-    var map = Drupal.openlayers.getMapById(jQuery('.openlayers-map')[0].id).map;
-    console.log(map.getLayers());
-    jQuery('input[name=servicelayer]').each(function()
+    jQuery('body').on('click','#loadwms',function()
     {
-	if(jQuery(this).is(':checked'))
+	var serviceurl = jQuery('#wmsgetcapabilitiesurl').val();
+	var format = jQuery('input[name=imageformat]:checked').val();
+//	var map = Drupal.openlayers.getMapById(jQuery('.openlayers-map')[0].id).map;
+	jQuery('input[name=servicelayer]').each(function()
 	{
-	    //Layer hinzufügen
-	    layer = addmyLayer(1, jQuery(this).attr('layername'),jQuery(this).parent().text(),serviceurl);
-	    console.log(layer);
-	    map.addLayer(layer); //mainmap is not correct
-	}
-	else
-	{
-	    layer = addmyLayer(0, jQuery(this).attr('layername'),jQuery(this).parent().text(),serviceurl);
-	    console.log(layer);
-	    map.addLayer(layer); //mainmap is not correct
-	};
+	    if(jQuery(this).is(':checked'))
+	    {
+		//Layer hinzufügen
+		layer = addmyLayer(1, jQuery(this).attr('layername'),jQuery(this).parent().text(),serviceurl);
+		ol3_map.addLayer(layer);
+	    }
+	    else
+	    {
+		layer = addmyLayer(0, jQuery(this).attr('layername'),jQuery(this).parent().text(),serviceurl);
+		ol3_map.addLayer(layer);
+	    };
+	});
     });
-    console.log(map.getLayers());
 });
+
+
+
+};
+ol.inherits(wmsloaderControl, ol.control.Control);
+
+
+var startwmsgui = function(e) {
+    var guioverlay = '<div id="wmsloaderoverlay"><div class="wmsoverlaydiv"><p>For Example use:http://www.bgr.de/service/bodenkunde/boart1000_ob/v2.0/index.php?service=wms&version=1.1.1&request=GetCapabilities</p><div id="capa"></div><input id="wmsgetcapabilitiesurl" type="text" value=""></input><button type="button" id="loadcapa">loadCapa</button><button type="button" id="loadwms">loadWMS</button><button type="button" id="closeoverlay">Close</button></div></div>';
+    jQuery('body').append(guioverlay);
+  };
+
 function addmyLayer(status, layername, layertitle, serviceurl)
 {
-    console.log(layername);
     var layer = new ol.layer.Tile(
     {
 	source: new ol.source.TileWMS(/** @type {olx.source.TileWMSOptions} */ (
@@ -90,12 +84,11 @@ function addmyLayer(status, layername, layertitle, serviceurl)
     layer.set('base',false);
     if(status == 0)
     {
-	layer.setVisible(true);//test when in production you need to set it to false
+	layer.setVisible(false);
     };
     if(status == 1)
     {
 	layer.setVisible(true);
     }
-    console.log(layer);
     return layer;
 };
