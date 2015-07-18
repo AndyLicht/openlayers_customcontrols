@@ -54,23 +54,29 @@ jQuery('body').on('click','#loadwms',function()
     console.log('Wms laden');
     var serviceurl = jQuery('#wmsgetcapabilitiesurl').val();
     var format = jQuery('input[name=imageformat]:checked').val();
-
+    var map = Drupal.openlayers.getMapById(jQuery('.openlayers-map')[0].id).map;
+    console.log(map.getLayers());
     jQuery('input[name=servicelayer]').each(function()
     {
 	if(jQuery(this).is(':checked'))
 	{
 	    //Layer hinzufügen
-	    map.addLayer(addmyLayer(1, jQuery(this).attr('layername'),jQuery(this).parent().text(),serviceurl)); //mainmap is not correct
+	    layer = addmyLayer(1, jQuery(this).attr('layername'),jQuery(this).parent().text(),serviceurl);
+	    console.log(layer);
+	    map.addLayer(layer); //mainmap is not correct
 	}
 	else
 	{
-	    map.addLayer(addmyLayer(0, jQuery(this).attr('layername'),jQuery(this).parent().text(),serviceurl)); //mainmap is not correct
+	    layer = addmyLayer(0, jQuery(this).attr('layername'),jQuery(this).parent().text(),serviceurl);
+	    console.log(layer);
+	    map.addLayer(layer); //mainmap is not correct
 	};
     });
+    console.log(map.getLayers());
 });
 function addmyLayer(status, layername, layertitle, serviceurl)
 {
-    console.log('addmylayer-function');
+    console.log(layername);
     var layer = new ol.layer.Tile(
     {
 	source: new ol.source.TileWMS(/** @type {olx.source.TileWMSOptions} */ (
@@ -84,11 +90,12 @@ function addmyLayer(status, layername, layertitle, serviceurl)
     layer.set('base',false);
     if(status == 0)
     {
-	layer.setVisible(false);
+	layer.setVisible(true);//test when in production you need to set it to false
     };
     if(status == 1)
     {
 	layer.setVisible(true);
     }
+    console.log(layer);
     return layer;
 };
