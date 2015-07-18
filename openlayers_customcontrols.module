@@ -5,7 +5,7 @@
  */
 
 /**
- * Implements hook_ctools_plugin_api().
+ * Implements hook_ctools_plugin_api()
  */
 function openlayers_customcontrols_ctools_plugin_api($module, $api) {
   $path = drupal_get_path('module', 'openlayers_customcontrols') . '/includes';
@@ -16,24 +16,7 @@ function openlayers_customcontrols_ctools_plugin_api($module, $api) {
 }
 
 /**
- * Implements hook_menu().
- */
-function openlayers_customcontrols_menu() {
-  $items = array();
-
-  $items['openlayers_customcontrols'] = array(
-    'title' => 'OpenLayers 3.x customcontrols',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('openlayers_customcontrols'),
-    'access arguments' => array('access content'),
-    'type' => MENU_NORMAL_ITEM,
-  );
-
-  return $items;
-}
-
-/**
- * Form handler.
+ * Form handler
  */
 function openlayers_customcontrols($form, &$form_state, $map_arg = NULL) {
   $maps = array();
