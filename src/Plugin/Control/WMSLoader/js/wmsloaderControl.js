@@ -1,8 +1,7 @@
-var mainmap;
+//var mainmap;
 var wmsloaderControl = function(opt_options,ol3_map) {
     var options = opt_options || {};
-    mainmap = ol3_map;
-    console.log(mainmap);
+//    mainmap = ol3_map;
     var button = document.createElement('button');
     button.type = 'button';
     button.innerHTML = 'WMS';
@@ -61,11 +60,11 @@ jQuery('body').on('click','#loadwms',function()
 	if(jQuery(this).is(':checked'))
 	{
 	    //Layer hinzufügen
-	    mainmap.addLayer(addmyLayer(1, jQuery(this).attr('layername'),jQuery(this).parent().text(),serviceurl)); //mainmap is not correct
+	    map.addLayer(addmyLayer(1, jQuery(this).attr('layername'),jQuery(this).parent().text(),serviceurl)); //mainmap is not correct
 	}
 	else
 	{
-	    mainmap.addLayer(addmyLayer(0, jQuery(this).attr('layername'),jQuery(this).parent().text(),serviceurl)); //mainmap is not correct
+	    map.addLayer(addmyLayer(0, jQuery(this).attr('layername'),jQuery(this).parent().text(),serviceurl)); //mainmap is not correct
 	};
     });
 });
