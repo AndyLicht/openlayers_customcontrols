@@ -1,4 +1,6 @@
-var wmsloaderControl = function(opt_options,ol3_map) {
+var wmsloaderControl = function(opt_options,ol3_map) 
+{
+	console.log('Options:'+opt_options);
     var options = opt_options || {};
     var button = document.createElement('button');
 	var serviceurl = '';
@@ -20,6 +22,8 @@ var wmsloaderControl = function(opt_options,ol3_map) {
     });
     jQuery('body').on('click','#closeoverlay',function()
     {
+		console.log(Drupal.settings.openlayers);
+		console.log(Drupal.settings.customcontrolpath);
 		jQuery('#wmsloaderoverlay').remove();
     });
 
