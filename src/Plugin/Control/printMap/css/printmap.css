@@ -1,0 +1,15 @@
+.printMap-button
+{
+  top: 65px;
+  left: .5em;
+  width:auto!important;
+}
+.ol-touch .printMap-button
+{
+  top: 200px;
+}
+button
+{
+    width:auto!important;
+    padding: 5px !important;
+}
