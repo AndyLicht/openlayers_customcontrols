@@ -28,9 +28,8 @@ function openlayers_customcontrols_default_openlayers_controls()
     $ol_control->factory_service = 'openlayers.Control:WMSLoader';
     $ol_control->options = array();
     $export['openlayers_control_wmsloader'] = $ol_control;
-
-
-    $ol_control = new stdClass();
+		
+	$ol_control = new stdClass();
     $ol_control->api_version = 1;
     $ol_control->machine_name = 'openlayers_control_printmap';
     $ol_control->name = 'PrintMap';
@@ -38,16 +37,6 @@ function openlayers_customcontrols_default_openlayers_controls()
     $ol_control->factory_service = 'openlayers.Control:PrintMap';
     $ol_control->options = array();
     $export['openlayers_control_printmap'] = $ol_control;
-
-		
-    $ol_control = new stdClass();
-    $ol_control->api_version = 1;
-    $ol_control->machine_name = 'openlayers_control_wmcloader';
-    $ol_control->name = 'WMCLoader';
-    $ol_control->description = 'loads a WMC-Document';
-    $ol_control->factory_service = 'openlayers.Control:PrintMap';
-    $ol_control->options = array();
-    $export['openlayers_control_wmcloader'] = $ol_control;
 
     return $export;
 }
