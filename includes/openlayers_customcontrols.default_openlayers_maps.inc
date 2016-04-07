@@ -19,17 +19,17 @@ function openlayers_customcontrols_default_openlayers_maps() {
   $ol_map->factory_service = 'openlayers.Map:OLMap';
   $ol_map->options = array(
     'width' => 'auto',
-    'height' => '300px',
+    'height' => '700px',
     'contextualLinks' => 1,
     'provideBlock' => 1,
     'provideIframe' => 1,
     'view' => array(
       'center' => array(
-        'lat' => 0,
-        'lon' => 0,
+        'lat' => 8.5,
+        'lon' => 50.0,
       ),
       'rotation' => '0',
-      'zoom' => '2',
+      'zoom' => '5',
     ),
     'layers' => array(
       0 => 'openlayers_layer_custumcontrols_bkg_dop20',
@@ -38,7 +38,7 @@ function openlayers_customcontrols_default_openlayers_maps() {
     ),
     'controls' => array(
       0 => 'openlayers_control_zoom',
-      /*1 => 'openlayers_examples_control_ol3layerswitcher',*/
+      1 => 'openlayers_examples_control_ol3layerswitcher',
     ),
     'interactions' => array(
       0 => 'openlayers_interaction_doubleclickzoom',
