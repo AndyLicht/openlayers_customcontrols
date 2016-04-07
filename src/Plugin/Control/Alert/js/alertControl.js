@@ -1,4 +1,5 @@
 var alertControl = function(opt_options) {
+    console.log('Hustensaft');
     var options = opt_options || {};
 
     var button = document.createElement('button');

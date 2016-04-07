@@ -28,26 +28,25 @@ function openlayers_customcontrols_default_openlayers_controls()
     $ol_control->factory_service = 'openlayers.Control:WMSLoader';
     $ol_control->options = array();
     $export['openlayers_control_wmsloader'] = $ol_control;
-
-
+    
+    
     $ol_control = new stdClass();
     $ol_control->api_version = 1;
-    $ol_control->machine_name = 'openlayers_control_printmap';
-    $ol_control->name = 'PrintMap';
-    $ol_control->description = 'print the shown map and a gives a configuration in an overlay';
-    $ol_control->factory_service = 'openlayers.Control:PrintMap';
+    $ol_control->machine_name = 'openlayers_control_layerloader';
+    $ol_control->name = 'LayerLoader';
+    $ol_control->description = 'load a WMS via Capabilities-URL and a Overlay';
+    $ol_control->factory_service = 'openlayers.Control:LayerLoader';
     $ol_control->options = array();
-    $export['openlayers_control_printmap'] = $ol_control;
-
-		
+    $export['openlayers_control_wmsloader'] = $ol_control;
+ 
     $ol_control = new stdClass();
     $ol_control->api_version = 1;
-    $ol_control->machine_name = 'openlayers_control_wmcloader';
-    $ol_control->name = 'WMCLoader';
-    $ol_control->description = 'loads a WMC-Document';
-    $ol_control->factory_service = 'openlayers.Control:PrintMap';
+    $ol_control->machine_name = 'openlayers_control_treeview';
+    $ol_control->name = 'Treeview';
+    $ol_control->description = 'show a nice Layertree';
+    $ol_control->factory_service = 'openlayers.Control:Treeview';
     $ol_control->options = array();
-    $export['openlayers_control_wmcloader'] = $ol_control;
+    $export['openlayers_control_treeview'] = $ol_control;
 
     return $export;
 }
