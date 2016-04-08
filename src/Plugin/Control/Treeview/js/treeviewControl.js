@@ -8,6 +8,7 @@
         var this_ = this;
         var tipLabel = 'LayerTree';
         var layertree = this_.bildlayertree(ol3_map);
+        console.log('Layertree');
         console.log(layertree);
         
         this.hiddenClassName = 'ol-unselectable ol-control layer-layertree';
@@ -24,10 +25,12 @@
         this.panel.className = 'panel';
         this.panel.id = 'treeview';
         element.appendChild(this.panel);
-        
-        $('#treeview').treeview({data: layertree,showCheckbox:true,showOpacity:true,showDeleteIcon:true,showXmlIcon:true,showExtentIcon:true,showLegendIcon:true});
-        console.log($('#treeview').treeview({data: layertree,showCheckbox:true,showOpacity:true,showDeleteIcon:true,showXmlIcon:true,showExtentIcon:true,showLegendIcon:true}));
 
+        window.onload = function ()
+        {
+            $('#treeview').treeview({data: layertree,showCheckbox:true,showOpacity:true,showDeleteIcon:true,showXmlIcon:true,showExtentIcon:true,showLegendIcon:true,olMap:ol3_map});
+        }
+       
         var layertree_shown = false;
         button.onclick = function(e) 
         {
@@ -83,9 +86,9 @@
         var group = [];
         layers.forEach(function(layer) 
         {
-            if((layer.get('base') === false) && (isInArray(layer.get('group'),group) === false))
+            if((layer.get('base') === false) && (isInArray(layer.get('tree_group'),group) === false))
             {
-                group.push(layer.get('group'));
+                group.push(layer.get('tree_group'));
             }
         });
         group.forEach(function(gr)
@@ -105,38 +108,42 @@
                 layers.forEach(function(layer)
                 {
 
-                        if(layer.get('group') === gr)
+                        if(layer.get('tree_group') === gr)
                         {
-                                var layerdata = [];
-                                if(layer.getVisible())
-                                {
-                                        start_checked++;
-                                        layerdata ={
-                                                text: layer.get('title'),
-                                                val:layer.get('name'),
-                                                selectable:false,
-                                                uid: layer.get('uid'),
-                                                state:
-                                                {
-                                                    checked:true,
-                                                    opacity: layer.getOpacity()
-                                                }
-                                        };
-                                }
-                                else
-                                {
-                                        layerdata ={
-                                                text: layer.get('title'),
-                                                val:layer.get('name'),
-                                                selectable:false,
-                                                uid: layer.get('uid'),
-                                                state:{
-                                                    checked: false,
-                                                    opacity: layer.getOpacity()
-                                                }
-                                        };
-                                }
-                                grdata.nodes.push(layerdata);
+                            console.log('Opacity:');
+                            console.log(layer.getOpacity());
+                            console.log(layer.get('opacity'));
+                            var layerdata = [];
+                            if(layer.getVisible())
+                            {
+                                    console.log(layer);
+                                    start_checked++;
+                                    layerdata ={
+                                            text: layer.get('tree_title'),
+                                            val:layer.get('tree_name'),
+                                            selectable:false,
+                                            uid: layer.get('tree_uid'),
+                                            state:
+                                            {
+                                                checked:true,
+                                                opacity: layer.getOpacity()
+                                            }
+                                    };
+                            }
+                            else
+                            {
+                                    layerdata ={
+                                            text: layer.get('tree_title'),
+                                            val:layer.get('tree_name'),
+                                            selectable:false,
+                                            uid: layer.get('tree_uid'),
+                                            state:{
+                                                checked: false,
+                                                opacity: layer.getOpacity()
+                                            }
+                                    };
+                            }
+                            grdata.nodes.push(layerdata);
                         };
                 });
                 if(start_checked > 0)

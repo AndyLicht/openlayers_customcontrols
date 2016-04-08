@@ -22,10 +22,10 @@ function openlayers_customcontrols_default_openlayers_layers() {
         'visible' => 1,
         'opacity' => 0.4,
         'base' => true,
-        'uid' => '1',
-        'group' => 'none',
-        'title' => 'WebAtlas',
-        'name' => 'openlayers_layer_customcontrols_bkg_webatlas_color',
+        'tree_uid' => '1',
+        'tree_group' => 'none',
+        'tree_title' => 'WebAtlas',
+        'tree_name' => 'openlayers_layer_customcontrols_bkg_webatlas_color',
         
     );
     
@@ -43,10 +43,10 @@ function openlayers_customcontrols_default_openlayers_layers() {
         'visible' => 1,
         'opacity' => 1,
         'base' => true,
-        'uid' => '2',
-        'group' => 'none',
-        'title' => 'WebAtlas (Graustufen)',
-        'name' => 'openlayers_layer_customcontrols_bkg_webatlas_grey',
+        'tree_uid' => '2',
+        'tree_group' => 'none',
+        'tree_title' => 'WebAtlas (Graustufen)',
+        'tree_name' => 'openlayers_layer_customcontrols_bkg_webatlas_grey',
     );
     
     $export['openlayers_layer_customcontrols_bkg_webatlas_grey'] = $ol_layer;
@@ -64,10 +64,10 @@ function openlayers_customcontrols_default_openlayers_layers() {
         'visible' => 1,
         'opacity' => 1,
         'base' => true,
-        'uid' => '3',
-        'group' => 'none',
-        'title' => 'DOP20',
-        'name' => 'openlayers_layer_customcontrols_bkg_dop20',
+        'tree_uid' => '3',
+        'tree_group' => 'none',
+        'tree_title' => 'DOP20',
+        'tree_name' => 'openlayers_layer_customcontrols_bkg_dop20',
     );
     
     $export['openlayers_layer_customcontrols_bkg_dop20'] = $ol_layer;
@@ -87,10 +87,10 @@ function openlayers_customcontrols_default_openlayers_layers() {
         'visible' => 1,
         'opacity' => 1,
         'base' => false,
-        'uid' => '4',
-        'group' => 'BGR Bodenkunde: BÜK 200 CC 3926 Braunschweig v1.7',
-        'title' => 'BGR Bodenkunde: BÜK 200 CC 3926 Braunschweig v1.7 Bodenpolygone',
-        'name' => 'buek200_3926mg_v17_polygons',
+        'tree_uid' => '4',
+        'tree_group' => 'BGR Bodenkunde: BÜK 200 CC 3926 Braunschweig v1.7',
+        'tree_title' => 'BGR Bodenkunde: BÜK 200 CC 3926 Braunschweig v1.7 Bodenpolygone',
+        'tree_name' => 'buek200_3926mg_v17_polygons',
     );
     $export['openlayers_layer_customcontrols_bgr_buek200_polygons'] = $ol_layer;
     
@@ -106,10 +106,10 @@ function openlayers_customcontrols_default_openlayers_layers() {
         'visible' => 1,
         'opacity' => 1,
         'base' => false,
-        'uid' => '5',
-        'group' => 'BGR Bodenkunde: BÜK 200 CC 3926 Braunschweig v1.7',
-        'title' => 'BGR Bodenkunde: BÜK 200 CC 3926 Braunschweig v1.7 Bodengrenzen',
-        'name' => 'buek200_3926mg_v17_arcs',
+        'tree_uid' => '5',
+        'tree_group' => 'BGR Bodenkunde: BÜK 200 CC 3926 Braunschweig v1.7',
+        'tree_title' => 'BGR Bodenkunde: BÜK 200 CC 3926 Braunschweig v1.7 Bodengrenzen',
+        'tree_name' => 'buek200_3926mg_v17_arcs',
     );
     $export['openlayers_layer_customcontrols_bgr_buek200_arcs'] = $ol_layer;
     
@@ -125,10 +125,10 @@ function openlayers_customcontrols_default_openlayers_layers() {
         'visible' => 1,
         'opacity' => 1,
         'base' => false,
-        'uid' => '6',
-        'group' => 'BGR Bodenkunde: BÜK 200 CC 3926 Braunschweig v1.7',
-        'title' => 'BGR Bodenkunde: BÜK 200 CC 3926 Braunschweig v1.7 Referenzpunkte',
-        'name' => 'buek200_3926mg_v17_labels',
+        'tree_uid' => '6',
+        'tree_group' => 'BGR Bodenkunde: BÜK 200 CC 3926 Braunschweig v1.7',
+        'tree_title' => 'BGR Bodenkunde: BÜK 200 CC 3926 Braunschweig v1.7 Referenzpunkte',
+        'tree_name' => 'buek200_3926mg_v17_labels',
     );
     $export['openlayers_layer_customcontrols_bgr_buek200_label'] = $ol_layer;
     
