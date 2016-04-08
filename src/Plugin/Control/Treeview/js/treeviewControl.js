@@ -3,8 +3,9 @@
     ol.control.treeviewControl = function(opt_options, ol3_map)
     {
         var options = opt_options || {};
+        var this_ = this;
         var tipLabel = 'LayerTree';
-        var layertree = bildlayertree(ol3_map);
+        var layertree = this_.bildlayertree(ol3_map);
         console.log(layertree);
         
         this.hiddenClassName = 'ol-unselectable ol-control layer-layertree';
@@ -26,7 +27,7 @@
         console.log(this);
 
         
-        var this_ = this;
+        
         var layertree_shown = false;
         button.onclick = function(e) 
         {
@@ -67,17 +68,13 @@
         }
     };
 
-    function isInArray(value, array) 
+    ol.control.treeviewControl.prototype.isInArray = function(value, array) 
     {
         return array.indexOf(value) > -1;
     }
     
-    
-    
-    
-    function bildlayertree(map)
+    ol.control.treeviewControl.prototype.bildlayertree = function (map)
     {
-        console.log('im Klickevent');
         var layers =  map.getLayers();
         var data = [];
         var group = [];

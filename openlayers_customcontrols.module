@@ -24,9 +24,9 @@ function openlayers_customcontrols($form, &$form_state, $map_arg = NULL) {
 	return $form;
 }
 
-    /**
-     * Implements hook_libraries_info().
-     */
+/**
+ * Implements hook_libraries_info().
+ */
 function openlayers_customcontrols_libraries_info()
 {
     $libraries['treeview'] = array(
