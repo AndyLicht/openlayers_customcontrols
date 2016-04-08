@@ -1,3 +1,5 @@
+/* global ol */
+
 (function($)
 {
     ol.control.treeviewControl = function(opt_options, ol3_map)
@@ -24,10 +26,7 @@
         element.appendChild(this.panel);
         
         $('#treeview').treeview({data:layertree});
-        console.log(this);
 
-        
-        
         var layertree_shown = false;
         button.onclick = function(e) 
         {
@@ -54,15 +53,14 @@
 
     ol.control.treeviewControl.prototype.showPanel = function() 
     {
-        if (this.element.className != this.shownClassName) 
+        if (this.element.className !== this.shownClassName) 
         {
             this.element.className = this.shownClassName;
-            //this.renderPanel();
         }
     };
     ol.control.treeviewControl.prototype.hidePanel = function() 
     {
-        if (this.element.className != this.hiddenClassName) 
+        if (this.element.className !== this.hiddenClassName) 
         {
             this.element.className = this.hiddenClassName;
         }
@@ -71,7 +69,7 @@
     ol.control.treeviewControl.prototype.isInArray = function(value, array) 
     {
         return array.indexOf(value) > -1;
-    }
+    };
     
     ol.control.treeviewControl.prototype.bildlayertree = function (map)
     {
@@ -93,7 +91,7 @@
                 selectable:false,
                 state:
                         {
-                            checked:false,
+                            checked:false
                         },
                 nodes:[]
             };
@@ -102,7 +100,7 @@
                 layers.forEach(function(layer)
                 {
 
-                        if(layer.get('group') == gr)
+                        if(layer.get('group') === gr)
                         {
                                 var layerdata = [];
                                 if(layer.getVisible())
@@ -116,7 +114,7 @@
                                                 state:
                                                 {
                                                     checked:true,
-                                                    opacity: layer.getOpacity(),
+                                                    opacity: layer.getOpacity()
                                                 }
                                         };
                                 }
@@ -129,7 +127,7 @@
                                                 uid: layer.get('uid'),
                                                 state:{
                                                     checked: false,
-                                                    opacity: layer.getOpacity(),
+                                                    opacity: layer.getOpacity()
                                                 }
                                         };
                                 }
@@ -142,7 +140,6 @@
                 };
                 data.push(grdata);
         });
-        console.log(data);
         return data;
     };  
     
