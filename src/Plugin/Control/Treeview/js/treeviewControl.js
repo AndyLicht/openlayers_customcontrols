@@ -4,10 +4,10 @@
     {
         var options = opt_options || {};
         var tipLabel = 'LayerTree';
-
-        this.mapListeners = [];
-
-        this.hiddenClassName = 'ol-unselectable ol-control layer-switcher';
+        var layertree = bildlayertree(ol3_map);
+        console.log(layertree);
+        
+        this.hiddenClassName = 'ol-unselectable ol-control layer-layertree';
         this.shownClassName = this.hiddenClassName + ' shown';
 
         var element = document.createElement('div');
@@ -19,29 +19,28 @@
 
         this.panel = document.createElement('div');
         this.panel.className = 'panel';
+        this.panel.id = 'treeview';
         element.appendChild(this.panel);
+        
+        $('#treeview').treeview({data:layertree});
+        console.log(this);
 
+        
         var this_ = this;
-        //var layers = this.getMap().getLayers();
-        //layers.forEach(function(layer){console.log(layer.getProperties())});
-        var layertree = [];
-        layertree = bildlayertree(ol3_map.getLayers());
-        console.log('layertree:  '+layertree);
         var layertree_shown = false;
         button.onclick = function(e) 
         {
-            e.preventDefault();  
+            e.preventDefault();
+            
             if(layertree_shown === false)
             {
-                //console.log(ol3_map.getLayers().getProperties());
-                //console.log(this_.getMap().getLayers().getProperties());
-                //this_.showPanel();
+                this_.showPanel();
                 layertree_shown = true;
             } 
             else
             {
                 layertree_shown = false;
-                //this_.hidePanel();
+                this_.hidePanel();
             }
         };
         ol.control.Control.call(this, 
@@ -52,31 +51,39 @@
     };
     ol.inherits(ol.control.treeviewControl, ol.control.Control);
 
-    function bildlayertree()
+    ol.control.treeviewControl.prototype.showPanel = function() 
     {
-        //console.log('map:  '+ol3_map);
+        if (this.element.className != this.shownClassName) 
+        {
+            this.element.className = this.shownClassName;
+            //this.renderPanel();
+        }
+    };
+    ol.control.treeviewControl.prototype.hidePanel = function() 
+    {
+        if (this.element.className != this.hiddenClassName) 
+        {
+            this.element.className = this.hiddenClassName;
+        }
+    };
 
-        var id = $('.openlayers-map').attr('id');
-        var map = Drupal.openlayers.getMapById(id);
-        console.log(map.map);
-        console.log(map.map.getLayers());
-        //var layers =  map.getLayers();
-        var layers = map.map.getLayers();
-        //console.log('layers: '+layers);
+    function isInArray(value, array) 
+    {
+        return array.indexOf(value) > -1;
+    }
+    
+    
+    
+    
+    function bildlayertree(map)
+    {
+        console.log('im Klickevent');
+        var layers =  map.getLayers();
         var data = [];
         var group = [];
         layers.forEach(function(layer) 
         {
-            console.log('Layer:'+layer.getProperties());
-            console.debug('Layer_Debug:'+layer.getProperties())
-//            console.log('Base '+layer.get('base'));
-//            console.log('Group '+layer.get('group'));
-//            console.log('Title '+layer.get('title'));
-//            console.log('Name '+layer.get('name'));
-//            console.log('Uid '+layer.get('uid'));
-              console.log('huhu');
-
-            if((layer.get('base') == false) && (isInArray(layer.get('group'),group) == false))
+            if((layer.get('base') === false) && (isInArray(layer.get('group'),group) === false))
             {
                 group.push(layer.get('group'));
             }
@@ -138,8 +145,8 @@
                 };
                 data.push(grdata);
         });
+        console.log(data);
         return data;
-    };
-    
+    };  
     
 })(jQuery);

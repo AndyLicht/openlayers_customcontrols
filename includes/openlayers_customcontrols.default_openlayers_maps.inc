@@ -32,13 +32,16 @@ function openlayers_customcontrols_default_openlayers_maps() {
       'zoom' => '5',
     ),
     'layers' => array(
-      0 => 'openlayers_layer_custumcontrols_bkg_dop20',
-      1 => 'openlayers_layer_custumcontrols_bkg_webatlas_grey',
-      2 => 'openlayers_layer_custumcontrols_bkg_webatlas_color',
+      0 => 'openlayers_layer_customcontrols_bkg_dop20',
+      1 => 'openlayers_layer_customcontrols_bkg_webatlas_grey',
+      2 => 'openlayers_layer_customcontrols_bkg_webatlas_color',
+      3 => 'openlayers_layer_customcontrols_bgr_buek200_polygons',
+        4 => 'openlayers_layer_customcontrols_bgr_buek200_arcs',
+        5 => 'openlayers_layer_customcontrols_bgr_buek200_label',
     ),
     'controls' => array(
       0 => 'openlayers_control_zoom',
-      1 => 'openlayers_examples_control_ol3layerswitcher',
+      1 => 'openlayers_control_treeview',
     ),
     'interactions' => array(
       0 => 'openlayers_interaction_doubleclickzoom',

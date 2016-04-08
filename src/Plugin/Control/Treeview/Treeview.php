@@ -19,4 +19,14 @@ use Drupal\openlayers\Types\Control;
  */
 class Treeview extends Control {
 
+    public function attached() {
+        $attached = parent::attached();
+
+        $attached['libraries_load'][] = array(
+            'treeview',
+        );
+        return $attached;
+    }
+
+    
 }

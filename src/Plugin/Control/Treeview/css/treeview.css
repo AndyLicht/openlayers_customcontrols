@@ -1,11 +1,11 @@
-.layer-switcher {
+.layer-layertree {
   position: absolute;
   top: 3.5em;
   right: 0.5em;
   text-align: left;
 }
 
-.layer-switcher .panel {
+.layer-layertree .panel {
   padding-right: 50px;
   border: 1px solid #cccccc;
   background-color: white;
@@ -13,11 +13,11 @@
   display: none;
 }
 
-.layer-switcher.shown .panel {
+.layer-layertree.shown .panel {
   display: block;
 }
 
-.layer-switcher button {
+.layer-layertree button {
   float: right;
   width: 38px;
   height: 38px;
@@ -28,27 +28,27 @@
   border: none;
 }
 
-.layer-switcher button:focus, .layer-switcher button:hover {
+.layer-layertree button:focus, .layer-layertree button:hover {
   background-color: white;
 }
 
-.layer-switcher label {
+.layer-layertree label {
   display: inline;
 }
 
-.layer-switcher ul {
+.layer-layertree ul {
   padding-left: 1em;
   list-style: none;
 }
 
-.layer-switcher li.group {
+.layer-layertree li.group {
   padding-top: 5px;
 }
 
-.layer-switcher li.group > label {
+.layer-layertree li.group > label {
   font-weight: bold;
 }
 
-.layer-switcher input {
+.layer-layertree input {
   margin: 4px;
 }
