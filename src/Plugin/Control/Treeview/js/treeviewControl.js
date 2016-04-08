@@ -25,7 +25,8 @@
         this.panel.id = 'treeview';
         element.appendChild(this.panel);
         
-        $('#treeview').treeview({data:layertree});
+        $('#treeview').treeview({data: layertree,showCheckbox:true,showOpacity:true,showDeleteIcon:true,showXmlIcon:true,showExtentIcon:true,showLegendIcon:true});
+        console.log($('#treeview').treeview({data: layertree,showCheckbox:true,showOpacity:true,showDeleteIcon:true,showXmlIcon:true,showExtentIcon:true,showLegendIcon:true}));
 
         var layertree_shown = false;
         button.onclick = function(e) 
@@ -66,7 +67,11 @@
         }
     };
 
-    ol.control.treeviewControl.prototype.isInArray = function(value, array) 
+//    ol.control.treeviewControl.prototype.isInArray = function(value, array) 
+//    {
+//        return array.indexOf(value) > -1;
+//    };
+    function isInArray (value, array) 
     {
         return array.indexOf(value) > -1;
     };

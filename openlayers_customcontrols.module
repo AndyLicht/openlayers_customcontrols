@@ -13,8 +13,8 @@ function openlayers_customcontrols_ctools_plugin_api($module, $api) {
     'version' => 1,
     'path' => $path,
   );
- 
 }
+
 function openlayers_customcontrols($form, &$form_state, $map_arg = NULL) {
 	$path = drupal_get_path('module','openlayers_customcontrol');
 	
@@ -27,6 +27,13 @@ function openlayers_customcontrols($form, &$form_state, $map_arg = NULL) {
 /**
  * Implements hook_libraries_info().
  */
+
+function openlayers_customcontrols_preprocess_html(&$variables)
+{
+    drupal_add_js(libraries_get_path('treeview') .'/src/js/bootstrap-treeview.js', array('type' => 'file', 'scope' => 'footer'));
+}
+
+
 function openlayers_customcontrols_libraries_info()
 {
     $libraries['treeview'] = array(
