@@ -8,8 +8,6 @@
         var this_ = this;
         var tipLabel = 'LayerTree';
         var layertree = this_.bildlayertree(ol3_map);
-        console.log('Layertree');
-        console.log(layertree);
         
         this.hiddenClassName = 'ol-unselectable ol-control layer-layertree';
         this.shownClassName = this.hiddenClassName + ' shown';
@@ -70,15 +68,15 @@
         }
     };
 
-//    ol.control.treeviewControl.prototype.isInArray = function(value, array) 
-//    {
-//        return array.indexOf(value) > -1;
-//    };
-    function isInArray (value, array) 
+    ol.control.treeviewControl.prototype.isInArray = function(value, array) 
     {
         return array.indexOf(value) > -1;
     };
-    
+//    function isInArray (value, array) 
+//    {
+//        return array.indexOf(value) > -1;
+//    };
+//    
     ol.control.treeviewControl.prototype.bildlayertree = function (map)
     {
         var layers =  map.getLayers();
@@ -86,7 +84,7 @@
         var group = [];
         layers.forEach(function(layer) 
         {
-            if((layer.get('base') === false) && (isInArray(layer.get('tree_group'),group) === false))
+            if((layer.get('base') === false) && (ol.control.treeviewControl.prototype.isInArray(layer.get('tree_group'),group) === false))
             {
                 group.push(layer.get('tree_group'));
             }
@@ -107,48 +105,43 @@
                 var start_checked = 0;
                 layers.forEach(function(layer)
                 {
-
-                        if(layer.get('tree_group') === gr)
+                    if(layer.get('tree_group') === gr)
+                    {
+                        var layerdata = [];
+                        if(layer.getVisible())
                         {
-                            console.log('Opacity:');
-                            console.log(layer.getOpacity());
-                            console.log(layer.get('opacity'));
-                            var layerdata = [];
-                            if(layer.getVisible())
-                            {
-                                    console.log(layer);
-                                    start_checked++;
-                                    layerdata ={
-                                            text: layer.get('tree_title'),
-                                            val:layer.get('tree_name'),
-                                            selectable:false,
-                                            uid: layer.get('tree_uid'),
-                                            state:
-                                            {
-                                                checked:true,
-                                                opacity: layer.getOpacity()
-                                            }
-                                    };
-                            }
-                            else
-                            {
-                                    layerdata ={
-                                            text: layer.get('tree_title'),
-                                            val:layer.get('tree_name'),
-                                            selectable:false,
-                                            uid: layer.get('tree_uid'),
-                                            state:{
-                                                checked: false,
-                                                opacity: layer.getOpacity()
-                                            }
-                                    };
-                            }
-                            grdata.nodes.push(layerdata);
-                        };
+                            start_checked++;
+                            layerdata ={
+                                text: layer.get('tree_title'),
+                                val:layer.get('tree_name'),
+                                selectable:false,
+                                uid: layer.get('tree_uid'),
+                                state:
+                                {
+                                    checked:true,
+                                    opacity: layer.getOpacity()
+                                }
+                            };
+                        }
+                        else
+                        {
+                            layerdata ={
+                                text: layer.get('tree_title'),
+                                val:layer.get('tree_name'),
+                                selectable:false,
+                                uid: layer.get('tree_uid'),
+                                state:{
+                                    checked: false,
+                                    opacity: layer.getOpacity()
+                                }
+                            };
+                        }
+                        grdata.nodes.push(layerdata);
+                    };
                 });
                 if(start_checked > 0)
                 {
-                        grdata.state.checked=true;
+                    grdata.state.checked=true;
                 };
                 data.push(grdata);
         });
