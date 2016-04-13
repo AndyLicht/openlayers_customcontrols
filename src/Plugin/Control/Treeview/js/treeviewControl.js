@@ -22,7 +22,11 @@
         this.panel.className = 'panel';
         this.panel.id = 'treeview';
         element.appendChild(this.panel);
-
+        
+        var dialog = document.createElement('div');
+        dialog.id = 'legendendialog';
+        document.body.appendChild(dialog);
+        
         window.onload = function ()
         {
             $('#treeview').treeview({data: layertree,showCheckbox:true,showOpacity:true,showDeleteIcon:true,showXmlIcon:true,showExtentIcon:true,showLegendIcon:true,olMap:ol3_map});
@@ -148,3 +152,9 @@
     };  
     
 })(jQuery);
+
+
+ol.Map.addListener = function()
+{
+    console.log('yeah');
+};
