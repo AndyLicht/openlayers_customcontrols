@@ -1,10 +1,10 @@
 <?php
 /**
  * @file
- * Control: Alert
+ * Control: PDFExport
  */
 
-namespace Drupal\openlayers_customcontrols\Plugin\Control\printMap;
+namespace Drupal\openlayers_customcontrols\Plugin\Control\PDFExport;
 use Drupal\openlayers\Component\Annotation\OpenlayersPlugin;
 use Drupal\openlayers\Types\Control;
 
@@ -12,11 +12,10 @@ use Drupal\openlayers\Types\Control;
  * Class Rotate.
  *
  * @OpenlayersPlugin(
- *  id = "Alert",
+ *  id = "PDFExport",
  *  description = "Display a small icon when clicked a alert message is shown."
  * )
  *
  */
-class printMap extends Control {
-
+class PDFExport extends Control {
 }

@@ -149,8 +149,7 @@
                 data.push(grdata);
         });
         return data;
-    };  
-    
+    };     
 })(jQuery);
 
 

@@ -42,6 +42,7 @@ function openlayers_customcontrols_default_openlayers_maps() {
     'controls' => array(
       0 => 'openlayers_control_zoom',
       1 => 'openlayers_control_treeview',
+      2 => 'openlayers_control_pdfexport',
     ),
     'interactions' => array(
       0 => 'openlayers_interaction_doubleclickzoom',

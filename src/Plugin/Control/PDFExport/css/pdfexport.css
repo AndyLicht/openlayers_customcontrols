@@ -1,0 +1,22 @@
+.ol-control-pdfexport
+{
+  top: 65px;
+  left: .5em;
+  width:auto!important;
+}
+.ol-control-pdfexport .disabled
+{
+  top: 65px;
+  left: .5em;
+  width:auto!important;
+  visibility: hidden;
+}
+.ol-touch .ol-control-pdfexport
+{
+  top: 200px;
+}
+button
+{
+    width:auto!important;
+    padding: 5px !important;
+}
