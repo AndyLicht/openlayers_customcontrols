@@ -31,21 +31,24 @@
     border-top-color: #ffcc33;
 }
 
-
-
-
-.alert-button
+#measure-tool-activate
 {
-  top: 65px;
-  left: .5em;
-  width:auto!important;
+    bottom: 5px;
+    right: 5px;
+    width:auto !important;
 }
-.ol-touch .alert-button
+
+.measure-tool
 {
-  top: 80px;
+    bottom: 5px;
+    right: 5px;
+    width: auto !important;
+    background: white;
 }
-button
+
+#activate-measure
 {
-    width:auto!important;
-    padding: 5px !important;
+    padding: 0px;
+    margin: 0 0;
 }
+
